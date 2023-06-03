@@ -1,0 +1,22 @@
+-includeresource: \
+	@${repo;org.alloytools:pardinus.core}, \
+	@${repo;org.alloytools:pardinus.nativesat}, \
+	@${repo;org.sat4j.core}, \
+	@${repo;org.sat4j.maxsat}, \
+	@${repo;org.sat4j.pb}, \
+	src/main/resources
+
+-buildpath: \
+	lib/apple-osx-ui.jar;version=file,\
+	org.alloytools:pardinus.core;version=1.3.0,\
+	org.alloytools.alloy.core;version=latest,\
+
+-testpath: \
+	biz.aQute.wrapper.junit, \
+	biz.aQute.wrapper.hamcrest, \
+    org.sat4j.core, \
+
+Private-Package: \
+	edu.mit.csail.sdg.alloy4graph,\
+	edu.mit.csail.sdg.alloy4viz,\
+	edu.mit.csail.sdg.alloy4whole,\
