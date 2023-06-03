@@ -4,6 +4,8 @@ Temporal Alloy Repair is a tool that extends Alloy6 to allow mutation-based auto
 
 # Requirements and Building
 
+Requires Alloy 6.1.0
+
 ### Build
 
 ````

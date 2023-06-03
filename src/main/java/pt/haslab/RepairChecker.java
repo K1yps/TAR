@@ -1,12 +1,12 @@
-package pt.haslab.util;
+package pt.haslab;
 
 import edu.mit.csail.sdg.alloy4.A4Reporter;
 import edu.mit.csail.sdg.alloy4.ErrorSyntax;
 import edu.mit.csail.sdg.ast.Command;
 import edu.mit.csail.sdg.ast.Func;
-import edu.mit.csail.sdg.ast.Module;
 import edu.mit.csail.sdg.parser.CompModule;
 import edu.mit.csail.sdg.parser.CompUtil;
+import pt.haslab.util.ReferencedFunctions;
 
 import java.io.IOException;
 import java.util.ArrayList;

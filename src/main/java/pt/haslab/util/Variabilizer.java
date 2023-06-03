@@ -50,29 +50,13 @@ public class Variabilizer {
 
 
     public static Optional<Expr> variabilize(Expr root, Expr varabilized) {
-
         if (varabilized.type().is_bool) {
             return Optional.of(varabilizeBool(root, varabilized));
         } else if (varabilized.type().is_int()) {
             throw new RuntimeException("Not Implemented");
         } else {
             return Optional.empty();
-            //return varabilizeSig(root, varabilized);
         }
-        /*
-        Expr declExpr = Sig.PrimSig.UNIV.oneOf();
-
-        String declName = "__variabilized_" + System.identityHashCode(varabilized);
-        ExprVar declVar = ExprVar.make(null, declName, declExpr.type());
-        Decl decl = new Decl(null, null, null, null, Collections.singletonList(declVar), declExpr);
-
-        Mutator mutator = Mutator.make(varabilized, declVar.equal(declVar));
-
-        return MutatorApplier
-                .make(Collections.singletonList(mutator))
-                .apply(root)
-                .forSome(decl);
-         */
     }
 
 }

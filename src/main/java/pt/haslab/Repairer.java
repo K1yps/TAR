@@ -1,4 +1,4 @@
-package pt.haslab.util;
+package pt.haslab;
 
 import edu.mit.csail.sdg.alloy4.*;
 import edu.mit.csail.sdg.ast.*;
@@ -10,10 +10,9 @@ import pt.haslab.mutation.Candidate;
 import pt.haslab.mutation.Location;
 import pt.haslab.mutation.MutationStepper;
 import pt.haslab.mutation.PruneReason;
-import pt.haslab.mutation.mutator.Generator;
+import pt.haslab.util.LocationAggregator;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static edu.mit.csail.sdg.alloy4.A4Preferences.*;
 
@@ -216,10 +215,6 @@ public class Repairer {
                 .count();
     }
 
-    public String generatedJSON() {
-        return mutationStepper.candidates.get(0).toJSON();
-    }
-
     public RepairStatus getRepairStatus() {
         return repairStatus;
     }
@@ -293,40 +288,6 @@ public class Repairer {
             }
 
             return null;
-        }
-
-        public String toJSON(Repairer repairer, ConstList<Sig> userSigs) {
-            ConstList<Sig> sigs = ConstList.make(userSigs.stream().filter(x -> x.label.startsWith("this/")).collect(Collectors.toList()));
-            ConstList<Sig.Field> fields = Generator.fieldsFromSigs(sigs);
-            Map<String, String> json = new HashMap<>();
-            Map<String, String> sigs_json = new HashMap<>();
-            Map<String, String> fields_json = new HashMap<>();
-            for (Sig sig : sigs) {
-                List<String> rel = new ArrayList<>();
-                cex.eval(sig).iterator().forEachRemaining(x -> rel.add("\"" + x.toString() + "\""));
-                sigs_json.put(sig.label.replace("this/", ""), JSON.toJSON(rel));
-            }
-            for (Sig.Field field : fields) {
-                List<String> rel = new ArrayList<>();
-                cex.eval(field).iterator().forEachRemaining(x -> rel.add("\"" + x.toString() + "\""));
-                fields_json.put(field.label.replace("this/", ""), JSON.toJSON(rel));
-            }
-            /* can only be added if __repair is in the form { mod <=> solution } */
-            {
-                Expr oracle = getOracleExpr(repairer);
-                if (oracle != null) {
-                    List<Expr> facts = new ArrayList<>();
-                    repairer.module.getAllFacts().iterator().forEachRemaining(f -> facts.add(f.b));
-                    facts.add(oracle);
-                    boolean res = this.evalAllStates(ExprMaker.make(facts, ExprList.Op.AND));
-                    json.put("expected", (res ? "1" : "0"));
-                }
-            }
-            json.put("sigs", JSON.toJSON(sigs_json));
-            json.put("fields", JSON.toJSON(fields_json));
-            json.put("occurrences", String.valueOf(ocurrences));
-
-            return JSON.toJSON(json);
         }
     }
 }

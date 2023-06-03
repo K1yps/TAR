@@ -9,7 +9,7 @@ import java.util.Collection;
 
 public class ReferencedFunctions {
     public static Collection<Func> find(Func func) {
-        Collection<Func> ret = new ArrayList();
+        Collection<Func> ret = new ArrayList<>();
 
         VisitQuery<Void> visitQuery = new VisitQuery<Void>() {
             public Void visit(ExprCall x) {
