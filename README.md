@@ -4,18 +4,22 @@ Temporal Alloy Repair is a tool that extends Alloy6 to allow mutation-based auto
 
 # Requirements and Building
 
-You can check the [Alloy README](https://github.com/AlloyTools/org.alloytools.alloy) for these instructions.
+### Build
 
-# Building the docker image
+````
+mvn clean install
+````
 
-Simply run
-```sh
-$ docker build .
-```
-in the root project folder.
+### Artifact
 
-An already built image can also be found at [Docker Hub](https://hub.docker.com/r/kaixi26/atr).
+````
+mvn clean package
+````
 
 # Modification
 
-No changes have been made to the original source code in the core, all core additions have been made in the `pt.haslab` package, if you want to add new mutators you can do so by first creating a class extending `pt.haslab.mutation.mutator.Mutator` and then adding this class to the generation process in `pt.haslab.mutation.mutator.Generator`.
+The entire Alloy source code is now externally imported.
+
+The changes made to the project itself where either caused by the removal of bloat code/features or by the migration to Alloy 6.1.0
+
+The functionality of the tool remains exactly the same.

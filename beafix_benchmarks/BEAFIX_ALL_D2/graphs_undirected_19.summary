@@ -1,1 +1,0 @@
-graphs_undirected_19; true; 241; real; ORIGINAL: ((~ adj) . adj) in iden£REPAIRED: ((~ adj) - adj) in iden£; depth 2; VALID

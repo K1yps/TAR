@@ -1,1 +1,0 @@
-classroom_inv4_30; true; 16174; real; ORIGINAL: some (Student + Person)£REPAIRED: ! (some ((Student + Person) - Student + Teacher))£; depth 3; VALID

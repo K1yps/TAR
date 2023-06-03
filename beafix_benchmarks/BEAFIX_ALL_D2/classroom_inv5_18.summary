@@ -1,1 +1,0 @@
-classroom_inv5_18; true; 1431; real; ORIGINAL: Class in (Class . Teaches)£REPAIRED: ! (Teacher . Teaches in (Class . Teaches))£; depth 2; VALID

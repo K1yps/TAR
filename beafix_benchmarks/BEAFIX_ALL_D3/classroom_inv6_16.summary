@@ -1,1 +1,0 @@
-classroom_inv6_16; true; 9304; real; ORIGINAL: (Class . Teaches) = Teacher£REPAIRED: ((Class . (~ Teaches)) + Teacher) = (Teaches . Class)£; depth 3; VALID

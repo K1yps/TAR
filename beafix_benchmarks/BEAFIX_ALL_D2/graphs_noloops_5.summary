@@ -1,1 +1,0 @@
-graphs_noloops_5; true; 235; real; ORIGINAL: all a : one Node | a !in (a . (^ adj))£REPAIRED: all a : one Node | a !in (a . (adj))£; depth 2; VALID
