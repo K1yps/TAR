@@ -215,6 +215,27 @@ public class Repairer {
                 .count();
     }
 
+    public static List<Candidate> getValidCandidates(Expr target, ConstList<Sig> skolem, int maxDepth) {
+        Collection<Location> locations = LocationAggregator.BreadthBottomUp(target);
+
+        MutationStepper stepper = MutationStepper.make(locations, skolem, maxDepth);
+
+        List<Candidate> result = new ArrayList<>();
+
+        while (stepper.next()) {
+            try {
+                Candidate c = stepper.getCurrent();
+                c.apply(target);
+
+                c.mutated.resolve(target.type(), new ArrayList<>());
+                if (c.mutated.errors.isEmpty())
+                    result.add(c);
+            } catch (Err ignored) {
+            }
+        }
+        return result;
+    }
+
     public RepairStatus getRepairStatus() {
         return repairStatus;
     }

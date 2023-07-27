@@ -17,6 +17,8 @@ public class Candidate {
     public Optional<PruneReason> prunned = Optional.empty();
     public boolean visited = false;
 
+    public Expr mutated;
+
     Candidate(Candidate parent, List<Mutator> mutators) {
         this.mutators = mutators;
         this.variabilizationID = calculateVariabilizationID(mutators);
@@ -54,7 +56,7 @@ public class Candidate {
     }
 
     public Expr apply(Expr mutationTarget) throws ErrorType, ErrorSyntax {
-        return MutatorApplier.make(mutators).apply(mutationTarget);
+        return mutated = MutatorApplier.make(mutators).apply(mutationTarget);
     }
 
     public List<Map<Expr, Expr>> variabilize(List<Expr> mutationTargets) {

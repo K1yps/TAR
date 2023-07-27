@@ -9,7 +9,7 @@ Requires Alloy 6.1.0
 ### Build
 
 ````
-mvn clean install
+mvn clean compile
 ````
 
 ### Artifact
