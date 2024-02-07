@@ -1,5 +1,7 @@
 # TAR
 
+Forked from [Kaixi26/TAR](https://github.com/Kaixi26/TAR)
+
 Temporal Alloy Repair is a tool that extends Alloy6 to allow mutation-based automatic repair of specifications.
 
 # Requirements and Building
